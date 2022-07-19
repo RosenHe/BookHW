@@ -45,14 +45,6 @@ public class EmployeeServiceImpl implements EmployeeService {
             employee.getEmployee_age() > age
         ).collect(Collectors.toList());
         response.setData(employeeList);
-//        List<Employee> employeeList = employeePojo.data.stream().toList();
-//        List<Employee> employees = new ArrayList<>();
-//        for(Employee employee : employeeList){
-//            if(employee.getEmployee_age() > age){
-//                employees.add(employee);
-//            }
-//        }
-//        response.setData(employees);
         return response;
     }
 }
