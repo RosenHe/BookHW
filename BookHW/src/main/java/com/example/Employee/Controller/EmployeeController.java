@@ -13,20 +13,20 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "/employee")
 public class EmployeeController {
-    private EmployeeService employeeService;
+    private final EmployeeService employeeService;
     @Autowired
     public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
 
     @GetMapping
-    public ResponseEntity<String> getAllEmployee(){
+    public ResponseEntity<CommonResponse> getAllEmployee(){
         return new ResponseEntity<>(employeeService.getAllEmployee(), HttpStatus.OK);
     }
-//
-//    @GetMapping
-//    public ResponseEntity<List<EmployeePojo>> getEmployeeAtAge(@RequestBody int age){
-//        return new ResponseEntity<>(employeeService.getEmployeeAgeLargerThan(age), HttpStatus.OK);
-//    }
+
+    @GetMapping(params = {"age"})
+    public ResponseEntity<CommonResponse> getEmployeeAtAge(@RequestParam int age){
+        return new ResponseEntity<>(employeeService.getEmployeeAgeLargerThan(age), HttpStatus.OK);
+    }
 
 }

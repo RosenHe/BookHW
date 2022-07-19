@@ -1,11 +1,11 @@
 package com.example.Employee.Entity;
 
 public class Employee {
-    public int id;
-    public String employee_name;
-    public int employee_salary;
-    public int employee_age;
-    public String profile_image;
+    private int id;
+    private String employee_name;
+    private int employee_salary;
+    private int employee_age;
+    private String profile_image;
 
     public Employee(int id, String employee_name, int employee_salary, int employee_age, String profile_image) {
         this.id = id;
@@ -13,6 +13,26 @@ public class Employee {
         this.employee_salary = employee_salary;
         this.employee_age = employee_age;
         this.profile_image = profile_image;
+    }
+
+    public int getEmployee_age() {
+        return employee_age;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getEmployee_name() {
+        return employee_name;
+    }
+
+    public int getEmployee_salary() {
+        return employee_salary;
+    }
+
+    public String getProfile_image() {
+        return profile_image;
     }
 
     public Employee() {
