@@ -1,0 +1,58 @@
+
+public class July20 {
+    private static July20 july20;
+    private July20(){
+
+    }
+    public static July20 getInstance(){
+        if(july20==null){
+            july20 = new July20();
+            //System.out.println("SingletonCls instance created for the first time.");
+        }
+        return july20;
+    }
+    public String kthFrequency(List<String> list){
+        HashMap<String, Integer> map = new HashMap<>();
+        int freq = 0;
+        String res = list.get(0);
+        for(String s : list){
+            if(map.containsKey(s)){
+                map.put(s, map.get(s)+1);
+            }
+            map.put(s, 1);
+        }
+        for(String s: map.keySet()){
+            if(map.get(s) > freq) {
+                res = s;
+                freq = map.get(s);
+            }
+        }
+        return res;
+    }
+
+    public int checkString(String s){
+        StringBuilder sb = new StringBuilder();
+        for(char c: s.toCharArray()){
+            sb.append(c);
+            if(c == 'f') sb.append(" ");
+        }
+        String[] list = sb.toString().split(" ");
+        int pair = 0;
+        int ifNumber = 0;
+        int endIfNumber = 0;
+        int maxPair = 0;
+        for(String str: list){
+            if(str == "if") {
+                pair++;
+                ifNumber++;
+            }
+            else if(str == "endif") {
+                endIfNumber++;
+                pair--;
+            }
+            maxPair = Math.max(maxPair, pair);
+        }
+        return endIfNumber != ifNumber ? -1 : maxPair;
+    }
+
+}
